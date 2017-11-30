@@ -10,6 +10,12 @@ export class Source {
     private _country: string;
     private _articles = new Array<ArticleComponent>();
 
+    static fromJSON(json): Source {
+        const source = new Source(json.id, json.name, json.description, json.url, json.category, json.language, json.country);
+        source._id = json._id;
+        return source;
+    }
+
     constructor(id: string, name: string, description: string, url: string, category: string, language: string, country: string) {
         this._id = id;
         this._name = name;
@@ -50,5 +56,17 @@ export class Source {
 
     addArticle(article: ArticleComponent) {
         this._articles.push(article);
+    }
+
+    toJSON() {
+        return {
+            id: this._id,
+            name: this._name,
+            description: this._description,
+            url: this._url,
+            category: this._category,
+            language: this._language,
+            country: this._country,
+        }
     }
 }

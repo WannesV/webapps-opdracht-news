@@ -1,11 +1,20 @@
-<form class="ui large form segment"> 
+<form class="ui large form segment" [formGroup]='source'
+      (ngSubmit)='onSubmit()'> 
     <h3 class="ui header">Add source</h3>
     <div class="field">
-    <label for="name">Name:</label> 
-    <input id="name" name="name" #newsourcename>
+      <label for="name_id">Name:</label> 
+      <input type='text' id="name_id" formControlName="name" #spy>
     </div>
-    <button (click)="addSource(newsourcename)"
-    class="ui positive right floated button">
-Add source 
-</button>
+    <div class="ui pointing red basic label" 
+         *ngIf='source.get("name").errors?.required
+          && source.get("name").touched'>
+      error! this is required
+    </div>
+    <button type="submit"
+      class="ui positive right floated button">
+      Add source 
+    </button>
   </form>	
+REMOVE {{ source.value | json }}
+{{ spy.className}}
+{{ source.get("name".errors) | json}}

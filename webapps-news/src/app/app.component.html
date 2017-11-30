@@ -1,15 +1,13 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-</div>
-
 <div class="ui container">
-    <app-add-source (newSource)="newSourceAdded($event)"></app-add-source>
-    <div class="ui grid segment">
-      <app-source *ngFor="let source of _sources" 
-        [source]="source">
-        </app-source>
-    </div>
+  <div class="ui three item menu">
+    <a class="item" routerLinkActive='active'
+      routerLink="/source/list">Sources</a>
+    <a class="item" routerLinkActive='active'
+      routerLink="/source/add">Add Source</a>
+      <a *ngIf='(currentUser | async) else loginlink' class="item" routerLinkActive='active' routerLink="/logout">{{currentUser|async}}</a>
+      <ng-template #loginlink>
+        <a class="item" routerLinkActive='active' routerLink="/login">log in</a>
+      </ng-template>
   </div>
+  <router-outlet></router-outlet>
+</div>

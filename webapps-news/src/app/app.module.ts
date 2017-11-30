@@ -1,21 +1,25 @@
-import { ArticleComponent } from './source/article/article.component';
+import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http'
 import { AppComponent } from './app.component';
-import { SourceComponent } from './source/source/source.component';
-import { AddSourceComponent } from './source/add-source/add-source.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { SourceModule } from './source/source.module';
+import { AuthenticationService } from './user/authentication.service';
+import { AuthGuardService } from './user/auth-guard.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ArticleComponent,
-    SourceComponent,
-    AddSourceComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule, 
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

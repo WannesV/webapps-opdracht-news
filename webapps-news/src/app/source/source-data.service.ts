@@ -1,21 +1,31 @@
 import { Injectable } from '@angular/core';
+import { Http, Response, Headers } from '@angular/http'
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 import { Source } from './source.model';
+import { AuthenticationService } from '../user/authentication.service';
 
 @Injectable()
 export class SourceDataService {
+  private _appUrl = 'http://localhost:4200/API/sources/';
   private _sources = new Array<Source>();
 
-  constructor() { 
-    let source1 = new Source("techcrunch", "Techcrunch", "TechCrunch is a leading technology media property, dedicated to obsessively profiling startups, reviewing new Internet products, and breaking tech news.",
-    "https://techcrunch.com", "technology", "en", "us");
-    this._sources.push(source1);
+  constructor(private http: Http, private auth: AuthenticationService) { 
+
   }
 
-  get sources() : Source[] {
-    return this._sources;
+  get sources() : Observable<Source[]> {
+    return this.http.get('${this._appUrl}/sources', { headers: new Headers({Authorization: 'Bearer ${this.auth.token}'}) })
+    .map(response => response.json().map(item => Source.fromJSON(item)));
   }
 
-  addNewSource(source) {
-    this._sources.push(source);
+  getSource(id): Observable<Source> {
+    return this.http.get(`${this._appUrl}/source/${id}`)
+      .map(response => response.json()).map(item => Source.fromJSON(item));
+  }
+
+  addNewSource(source): Observable<Source> {
+    return this.http.post(this._appUrl, source)
+      .map(source => source.json()).map(item => Source.fromJSON(item));
   }
 }
