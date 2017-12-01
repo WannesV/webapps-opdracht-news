@@ -24,7 +24,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): Observable<boolean> {
-    return this.http.post('${this._url}/login', 
+    return this.http.post(`${this._url}/login`, 
       { username: username, password: password})
       .map(res => res.json()).map(res => {
         const token = res.token;
@@ -47,7 +47,7 @@ export class AuthenticationService {
   }
 
   register(username: string, password: string): Observable<boolean> {
-    return this.http.post('${this._url}/register',
+    return this.http.post(`${this._url}/register`,
       { username: username, password: password })
       .map(res => res.json()).map(res => {
         const token = res.token;
@@ -63,7 +63,7 @@ export class AuthenticationService {
   }
 
   checkUserNameAvailability(username: string): Observable<boolean> {
-    return this.http.post('${this._url}/checkusername', { username: username})
+    return this.http.post(`${this._url}/checkusername`, { username: username})
       .map(res => res.json())
       .map(item => {
         if (item.username === 'alreadyexists') {

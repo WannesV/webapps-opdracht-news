@@ -7,7 +7,7 @@ import { AuthenticationService } from '../user/authentication.service';
 
 @Injectable()
 export class SourceDataService {
-  private _appUrl = 'http://localhost:4200/API/sources/';
+  private _appUrl = 'http://localhost:4200/API';
   private _sources = new Array<Source>();
 
   constructor(private http: Http, private auth: AuthenticationService) { 
@@ -15,7 +15,7 @@ export class SourceDataService {
   }
 
   get sources() : Observable<Source[]> {
-    return this.http.get('${this._appUrl}/sources', { headers: new Headers({Authorization: 'Bearer ${this.auth.token}'}) })
+    return this.http.get(`${this._appUrl}/sources`, { headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) })
     .map(response => response.json().map(item => Source.fromJSON(item)));
   }
 

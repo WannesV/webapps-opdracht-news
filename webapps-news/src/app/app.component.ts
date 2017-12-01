@@ -12,12 +12,12 @@ import { AuthenticationService } from './user/authentication.service';
 })
 export class AppComponent implements OnInit {
   
-  //constructor(private authService: AuthenticationService) {}
-  /*
+  constructor(private authService: AuthenticationService) {}
+  
   get currentUser(): Observable<string> {
     return this.authService.user$;
   } 
-  */
+  
   ngOnInit() {
   }
 
