@@ -6,8 +6,8 @@
       <input type='text' id="name_id" formControlName="name" #spy>
     </div>
     <div class="ui pointing red basic label" 
-         *ngIf='source.get("name").errors?.required
-          && source.get("name").touched'>
+         *ngIf='name.errors?.required
+          && name.touched'>
       error! this is required
     </div>
     <button type="submit"
@@ -17,4 +17,4 @@
   </form>	
 REMOVE {{ source.value | json }}
 {{ spy.className}}
-{{ source.get("name".errors) | json}}
+{{ source.get("name").errors | json}}

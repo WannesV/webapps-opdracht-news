@@ -6,13 +6,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
+require('dotenv').config({path: './app-env.env'});
 
 require('./models/User');
 require('./models/Source');
 
 require('./config/passport');
 
-mongoose.connect('mongodb://localhost/newsdb', {
+mongoose.connect(process.env.NEWS_DATABASE, {
   useMongoClient: true
 });
 
@@ -22,8 +23,8 @@ var users = require('./routes/users');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -36,6 +37,13 @@ app.use(passport.initialize());
 
 app.use('/', index);
 app.use('/API/users', users);
+
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.all('*', (req, res)=>{
+  const indexFile =`${path.join(__dirname, 'dist')}/index.html`;
+  res.status(200).sendFile(indexFile);
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

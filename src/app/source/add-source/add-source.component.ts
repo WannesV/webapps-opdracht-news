@@ -11,8 +11,10 @@ import { SourceDataService } from '../source-data.service';
 })
 export class AddSourceComponent implements OnInit {
   @Output() public newSource = new EventEmitter<Source>();
-  private source: FormGroup;
-
+  public source: FormGroup;
+  get name(): FormControl {
+    return <FormControl>this.source.get("name");
+  }
   constructor(private fb: FormBuilder, private _sourceDataService: SourceDataService, private _router: Router) {}
 
   ngOnInit() {
