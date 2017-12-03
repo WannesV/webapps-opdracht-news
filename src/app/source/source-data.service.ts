@@ -7,7 +7,7 @@ import { AuthenticationService } from '../user/authentication.service';
 
 @Injectable()
 export class SourceDataService {
-  private _appUrl = 'https://localhost:4200/API';
+  private _appUrl = 'http://localhost:4200/API';
   private _apiUrl = 'https://newsapi.org/v2';
   private _sources = new Array<Source>();
 
@@ -37,12 +37,8 @@ export class SourceDataService {
   }
 
   subscribe(source: Source): Observable<Source> {
-    /*
     return this.http.put(`${this._appUrl}/source/${source.id}`, source, { headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) })
     .map(source => source.json()).map(item => Source.fromJSON2(item));
-    */
-    return this.http.post(`${this._appUrl}/sources`, source, { headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) })
-    .map(source => source.json()).map(item => Source.fromJSON(item));
   }
 
   unsubscribe(source: Source): Observable<Source> {

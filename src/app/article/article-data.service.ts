@@ -6,7 +6,7 @@ import { AuthenticationService } from '../user/authentication.service';
 
 @Injectable()
 export class ArticleDataService {
-  private _appUrl = 'https://localhost:4200/API';
+  private _appUrl = 'http://localhost:4200/API';
   private _apiUrl = 'https://newsapi.org/v2';
   private _articles = new Array<Article>();
 
