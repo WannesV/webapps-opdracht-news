@@ -13,14 +13,15 @@ require('./models/Source');
 
 require('./config/passport');
 
-/*
+
 mongoose.connect(process.env.NEWS_DATABASE, {
   useMongoClient: true
 });
-*/
+/*
 mongoose.connect('mongodb://localhost/newsdb', {
   useMongoClient: true
 });
+*/
 var index = require('./routes/index');
 var users = require('./routes/users');
 
