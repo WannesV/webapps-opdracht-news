@@ -15,7 +15,7 @@ private _sources: Source[];
   constructor(private _sourceDataService: SourceDataService) { }
 
   ngOnInit() {
-    this._sourceDataService.apiSources
+    this._sourceDataService.sources
       .subscribe(items => this._sources = items);
   }
 
