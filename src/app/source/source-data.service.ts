@@ -37,9 +37,12 @@ export class SourceDataService {
   }
 
   subscribe(source: Source): Observable<Source> {
+    /*
     return this.http.put(`${this._appUrl}/source/${source.id}`, source, { headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) })
     .map(source => source.json()).map(item => Source.fromJSON2(item));
-  
+    */
+    return this.http.post(`${this._appUrl}/sources`, source, { headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) })
+    .map(source => source.json()).map(item => Source.fromJSON(item));
   }
 
   unsubscribe(source: Source): Observable<Source> {
