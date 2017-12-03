@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Source } from '../source.model';
 import { SourceDataService } from '../source-data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-source-list',
@@ -14,7 +15,7 @@ private _sources: Source[];
   constructor(private _sourceDataService: SourceDataService) { }
 
   ngOnInit() {
-    this._sourceDataService.sources
+    this._sourceDataService.apiSources
       .subscribe(items => this._sources = items);
   }
 

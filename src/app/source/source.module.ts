@@ -1,7 +1,6 @@
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
-import { ArticleComponent } from './article/article.component';
 import { NgModule } from '@angular/core';
 import { SourceComponent } from './source/source.component';
 import { AddSourceComponent } from './add-source/add-source.component';
@@ -10,6 +9,8 @@ import { SourceDataService } from './source-data.service';
 import { RouterModule } from '@angular/router';
 import { SourceDetailComponent } from './source-detail/source-detail.component';
 import { SourceResolver } from './source-resolver.service';
+import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule,
+  MatListModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule } from '@angular/material';
 
 const routes = [
   { path: 'list', component: SourceListComponent },
@@ -23,14 +24,24 @@ const routes = [
     HttpModule,
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
     SourceComponent,
-    ArticleComponent,
     AddSourceComponent,
     SourceListComponent,
-    SourceDetailComponent
+    SourceDetailComponent,
   ],
   providers: [ 
     SourceDataService,

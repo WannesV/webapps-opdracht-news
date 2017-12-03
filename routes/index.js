@@ -29,6 +29,16 @@ router.post('/API/sources/', auth, function (req, res, next) {
   });
 });
 
+router.put('/API/source/:id', auth, function(req, res, next) {
+  console.log(req.body);
+  Source.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
+
+
 router.get('/API/source/:id', function(req, res, next)  {
   Source.findById(req.params.id, function(err, recipe) {
     if (err) return next(err);

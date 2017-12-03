@@ -1,4 +1,4 @@
-import { ArticleComponent } from "./article/article.component";
+import { ArticleComponent } from '../article/article/article.component';
 
 export class Source {
     private _id: string;
@@ -8,11 +8,19 @@ export class Source {
     private _category: string;
     private _language: string;
     private _country: string;
+    private _users = new Array<string>();
     private _articles = new Array<ArticleComponent>();
 
     static fromJSON(json): Source {
         const source = new Source(json.id, json.name, json.description, json.url, json.category, json.language, json.country);
         source._id = json._id;
+        return source;
+    }
+
+    static fromJSON2(json): Source {
+        const source = new Source(json.id, json.name, json.description, json.url, json.category, json.language, json.country);
+        source._id = json._id;
+        source._users = json.users;
         return source;
     }
 
@@ -54,8 +62,20 @@ export class Source {
         return this._country;
     }
 
+    get users(): string[] {
+        return this._users;
+    }
+
     addArticle(article: ArticleComponent) {
         this._articles.push(article);
+    }
+
+    addUser(user: string) {
+        this._users.push(user);
+    }
+
+    removeUser(user: string) {
+        this._users.splice(this._users.findIndex(u => u === user) , 1);
     }
 
     toJSON() {
@@ -67,6 +87,7 @@ export class Source {
             category: this._category,
             language: this._language,
             country: this._country,
+            users: this._users,
         }
     }
 }

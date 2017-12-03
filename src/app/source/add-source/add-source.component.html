@@ -1,20 +1,11 @@
-<form class="ui large form segment" [formGroup]='source'
-      (ngSubmit)='onSubmit()'> 
-    <h3 class="ui header">Add source</h3>
-    <div class="field">
-      <label for="name_id">Name:</label> 
-      <input type='text' id="name_id" formControlName="name" #spy>
-    </div>
-    <div class="ui pointing red basic label" 
-         *ngIf='name.errors?.required
-          && name.touched'>
-      error! this is required
-    </div>
-    <button type="submit"
-      class="ui positive right floated button">
-      Add source 
-    </button>
-  </form>	
-REMOVE {{ source.value | json }}
-{{ spy.className}}
-{{ source.get("name").errors | json}}
+<form>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Source" aria-label="Source" [matAutocomplete]="auto" [formControl]="sourceCtrl">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let state of filteredSources | async" [value]="source.name">
+          <span>{{ source.name }}</span> |
+          <small>Category: {{source.category}}</small>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+</form>

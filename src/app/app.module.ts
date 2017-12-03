@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserModule } from './user/user.module';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -7,9 +8,10 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { SourceModule } from './source/source.module';
 import { AuthenticationService } from './user/authentication.service';
 import { AuthGuardService } from './user/auth-guard.service';
+import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule,
+  MatListModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,19 @@ import { AuthGuardService } from './user/auth-guard.service';
     BrowserModule,
     HttpModule,
     ReactiveFormsModule, 
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
     UserModule,
     AppRoutingModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

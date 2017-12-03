@@ -8,5 +8,8 @@ var SourceSchema = new mongoose.Schema({
     category: String,
     language: String,
     country: String,
+    users: [{
+        type: String, 
+        ref: 'User'}]
 });
 mongoose.model('Source', SourceSchema);
