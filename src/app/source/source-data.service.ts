@@ -7,7 +7,7 @@ import { AuthenticationService } from '../user/authentication.service';
 
 @Injectable()
 export class SourceDataService {
-  private _appUrl = 'https://localhost:4200/API';
+  private _appUrl = '/API';
   private _apiUrl = 'https://newsapi.org/v2';
   private _sources = new Array<Source>();
 
