@@ -22,7 +22,7 @@ export class ArticleListComponent implements OnInit {
   private _categories: string[];
   private _countries: string[];
   private _languages: string[];
-  private searchForm: FormGroup;
+  private filterForm: FormGroup;
   private categorySelect: FormGroup;
   private countrySelect: FormGroup;
   private languageSelect: FormGroup;
@@ -60,7 +60,7 @@ export class ArticleListComponent implements OnInit {
       this._countries = Array.from(new Set(this._countries));
     });
     
-    this.searchForm = this.fb.group({
+    this.filterForm = this.fb.group({
       searchText: this.fb.control(''),
       categorySelect: this.fb.control(''),
       countrySelect: this.fb.control(''),
@@ -69,10 +69,10 @@ export class ArticleListComponent implements OnInit {
   }
 
   onChange() {
-    let s= this.searchForm.value.searchText.toLowerCase();
-    let cat = this.searchForm.value.categorySelect;
-    let c = this.searchForm.value.countrySelect;
-    let l = this.searchForm.value.languageSelect;
+    let s= this.filterForm.value.searchText.toLowerCase();
+    let cat = this.filterForm.value.categorySelect;
+    let c = this.filterForm.value.countrySelect;
+    let l = this.filterForm.value.languageSelect;
     this._filteredSources = this._sources;
     this._articleDataService.filteredArticles(s, cat, l, c)
     .subscribe(items => {
