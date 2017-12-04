@@ -1,3 +1,4 @@
+import { AuthenticationService } from '../../user/authentication.service';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Source } from '../source.model';
@@ -16,14 +17,18 @@ export class SourceListComponent implements OnInit {
   private _categories: string[];
   private _countries: string[];
   private _languages: string[];
+  private _types: string[];
   public searchForm: FormGroup;
   private categorySelect: FormGroup;
   private countrySelect: FormGroup;
   private languageSelect: FormGroup;
+  private typeSelect: FormGroup;
+  public user: string;
 
-  constructor(private _sourceDataService: SourceDataService, private fb: FormBuilder) { }
+  constructor(private _sourceDataService: SourceDataService, private fb: FormBuilder, private auth: AuthenticationService) { }
 
   ngOnInit() {
+    this.user = this.auth.user$['_value'];
     this._sourceDataService.sources
       .subscribe(items =>  {
         this._sources = items;
@@ -39,12 +44,14 @@ export class SourceListComponent implements OnInit {
         this._countries = Array.from(new Set(this._countries));
       });
     
-
+    this._types = ["Both", "Only Subscribed", "Only Non Subscribed"];
+    
     this.searchForm = this.fb.group({
       searchText: this.fb.control(''),
       categorySelect: this.fb.control(''),
       countrySelect: this.fb.control(''),
-      languageSelect: this.fb.control('')
+      languageSelect: this.fb.control(''),
+      typeSelect: this.fb.control('')
     });
   }
 
@@ -67,6 +74,16 @@ export class SourceListComponent implements OnInit {
     if(!(l === '' || l === 'all languages')) {
       this._filteredSources = this._filteredSources.filter(s => s.language === l);
     }
+    switch(this.searchForm.value.typeSelect) {
+      case 'Both':
+        break;
+      case 'Only Subscribed':
+        this._filteredSources = this._filteredSources.filter(s => s.users.includes(this.user));
+        break;
+      case 'Only Non Subscribed':
+      this._filteredSources = this._filteredSources.filter(s => !s.users.includes(this.user));
+        break;
+    }
   }
 
   get sources() {
@@ -87,5 +104,9 @@ export class SourceListComponent implements OnInit {
 
   get languages() {
     return this._languages;
+  }
+
+  get types() {
+    return this._types;
   }
 }

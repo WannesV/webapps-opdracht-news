@@ -13,7 +13,7 @@ export class Source {
 
     static fromJSON(json): Source {
         const source = new Source(json.id, json.name, json.description, json.url, json.category, json.language, json.country);
-        source._id = json._id;
+        //source._id = json._id;
         return source;
     }
 

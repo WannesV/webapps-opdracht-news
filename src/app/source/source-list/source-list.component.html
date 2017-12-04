@@ -27,6 +27,14 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
+    <mat-form-field class="example-select">
+            <mat-select placeholder="Subscribed?" formControlName="typeSelect"
+            (change)='onChange()'>
+                <mat-option *ngFor="let type of types" [value]="type">
+                    {{type}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 </form>
 <mat-list>
     <app-source *ngFor="let localSource of filteredSources" [source]="localSource" >

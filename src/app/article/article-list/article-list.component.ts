@@ -26,6 +26,7 @@ export class ArticleListComponent implements OnInit {
   private categorySelect: FormGroup;
   private countrySelect: FormGroup;
   private languageSelect: FormGroup;
+  private _apiSources: Source[];
 
   constructor(private _articleDataService: ArticleDataService, private auth: AuthenticationService, private _sourceDataService: SourceDataService, private fb: FormBuilder) {
    }
@@ -36,13 +37,24 @@ export class ArticleListComponent implements OnInit {
     this._sourceDataService.sources
     .subscribe(items => {
       this._sources = items;
-      this._sources.forEach(s => {
-        if(s.users.includes(this.user)) {
-          sourceList += s.name.replace(' ', '-') + ',';
-        }
-      });
-      this._articleDataService.articles(sourceList)
-      .subscribe(items => this._articles = items);
+      this._sourceDataService.apiSources
+        .subscribe(items2 => {
+          this._apiSources = items2;
+          this._sources.forEach(s => {
+            if(s.users.includes(this.user)) {
+              let id = this._apiSources.find(so => so.name === s.name ).id;
+              sourceList += id + ',';
+            }
+          });
+          this._articleDataService.articles(sourceList)
+          .subscribe(items => {
+            this._articles = items;
+            this._articles.sort((a: Article, b: Article) => {
+              return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+            });
+          });
+        });
+      
     });
 
     this._sourceDataService.sources
@@ -77,6 +89,9 @@ export class ArticleListComponent implements OnInit {
     this._articleDataService.filteredArticles(s, cat, l, c)
     .subscribe(items => {
       this._filteredArticles = items;
+      this._filteredArticles.sort((a: Article, b: Article) => {
+        return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+      });
     });
   }
 

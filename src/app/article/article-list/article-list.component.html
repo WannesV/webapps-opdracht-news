@@ -32,11 +32,12 @@
               </mat-select>
           </mat-form-field>
           <button mat-raised-button (click)="onChange()">Search</button>
-          <mat-list>
-            <app-article *ngFor="let localArticle2 of filteredArticles" [article]="localArticle2" >
-            </app-article>
-          </mat-list>
+          
       </form>
+      <mat-list>
+        <app-article *ngFor="let localArticle2 of filteredArticles" [article]="localArticle2" >
+        </app-article>
+      </mat-list>
   </mat-tab>
 </mat-tab-group>
 
