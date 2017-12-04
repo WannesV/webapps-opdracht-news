@@ -1,10 +1,35 @@
-<form class="example-form">
+<form class="example-form" [formGroup]="searchForm">
     <mat-form-field class="example-full-width">
-        <input matInput placeholder="Source" (change)="search()">
+        <input matInput placeholder="Source" formControlName="searchText"
+            (keyup)='onChange()'>
+    </mat-form-field>
+    <mat-form-field class="example-select">
+        <mat-select placeholder="Category" formControlName="categorySelect"
+        (change)='onChange()'>
+            <mat-option *ngFor="let category of categories" [value]="category">
+                {{category}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-select">
+        <mat-select placeholder="Language" formControlName="languageSelect"
+        (change)='onChange()'>
+            <mat-option *ngFor="let language of languages" [value]="language">
+                 {{language}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-select">
+        <mat-select placeholder="Country" formControlName="countrySelect"
+        (change)='onChange()'>
+            <mat-option *ngFor="let country of countries" [value]="country">
+                {{country}}
+            </mat-option>
+        </mat-select>
     </mat-form-field>
 </form>
 <mat-list>
-    <app-source *ngFor="let localSource of sources" [source]="localSource" >
+    <app-source *ngFor="let localSource of filteredSources" [source]="localSource" >
     </app-source>
 </mat-list>
 

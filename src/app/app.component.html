@@ -1,6 +1,17 @@
 
   <mat-toolbar color="primary">
     <span>News from the NewsAPI</span>
+    
+    <button mat-button  routerLink="">Home</button>
+    <button mat-button  routerLinkActive='active' class="toolbar-buttons"
+      routerLink="/source/list">Sources</button>
+    <button mat-button  routerLinkActive='active' class="toolbar-buttons"
+      routerLink="/article/list">Articles</button>
+    <button mat-button  *ngIf='(currentUser | async) else loginlink' class="toolbar-buttons" 
+      routerLinkActive='active' routerLink="/logout">{{currentUser|async}}</button>
+    <ng-template #loginlink>
+      <button mat-button routerLinkActive='active' routerLink="/login">log in</button>
+    </ng-template>
     <span class="example-spacer"></span>
     <button mat-button *ngIf='(currentUser | async)' [matMenuTriggerFor]="appMenu">
         <mat-icon>menu</mat-icon>
@@ -13,8 +24,6 @@
       routerLink="/source/list">Sources</button>
     <button mat-menu-item routerLinkActive='active'
       routerLink="/article/list">Articles</button>
-    <button mat-menu-item routerLinkActive='active'
-      routerLink="/source/add">Add Source</button>
     <button mat-menu-item *ngIf='(currentUser | async) else loginlink' class="item" routerLinkActive='active' routerLink="/logout">{{currentUser|async}}</button>
     <ng-template #loginlink>
       <button mat-menu-item routerLinkActive='active' routerLink="/login">log in</button>

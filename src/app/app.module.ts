@@ -12,7 +12,7 @@ import { AuthenticationService } from './user/authentication.service';
 import { AuthGuardService } from './user/auth-guard.service';
 import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule,
   MatListModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, 
-  MatGridListModule, MatExpansionModule} from '@angular/material';
+  MatGridListModule, MatExpansionModule, MatSelectModule, MatTabsModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIco
     MatAutocompleteModule,
     MatGridListModule,
     MatExpansionModule,
-  
+    MatSelectModule,
+    MatTabsModule,
     UserModule,
     AppRoutingModule,
   ],

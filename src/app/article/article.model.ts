@@ -6,19 +6,21 @@ export class Article {
     private _url: string;
     private _urlToImage: string;
     private _publishedAt: string;
+    private _source: string;
 
     static fromJSON(json): Article {
-        const article = new Article(json.author, json.title, json.description, json.url, json.urlToImage, json.publishedAt);
+        const article = new Article(json.author, json.title, json.description, json.url, json.urlToImage, json.publishedAt, json.source.name);
         return article;
     }
 
-    constructor(author: string, title: string, description: string, url: string, urlToImage: string, publishedAt: string) {
+    constructor(author: string, title: string, description: string, url: string, urlToImage: string, publishedAt: string, source: string) {
         this._author = author;
         this._title = title;
         this._description = description;
         this._url = url;
         this._urlToImage = urlToImage;
         this._publishedAt = publishedAt;
+        this._source = source;
     }
 
     get author(): string {
@@ -43,6 +45,10 @@ export class Article {
 
     get publishedAt(): string {
         return this._publishedAt;
+    }
+
+    get source(): string {
+        return this._source;
     }
 
     toJSON() {

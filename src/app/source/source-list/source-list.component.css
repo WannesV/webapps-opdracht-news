@@ -6,5 +6,11 @@
   }
   
 .example-full-width {
-    width: 100%;
+    width: 98%;
+    margin: 1%;
 }  
+
+.example-select {
+    width: 30%;
+    margin: 1%;
+}

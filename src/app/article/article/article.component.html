@@ -1,7 +1,10 @@
 <mat-card class="example-card" backgroundcolor="blue">
   <mat-card-title-group>
       <mat-card-title>
-          <a href="{{article.url}}" target="_blank">{{article.title}}</a>
+          <a href="{{article.url}}" target="_blank">
+            {{article.source}}:<br>
+            {{article.title}}
+          </a>
         </mat-card-title>
         <mat-card-subtitle>
           {{article.publishedAt}}

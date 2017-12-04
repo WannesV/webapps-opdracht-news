@@ -1,4 +1,42 @@
-<mat-list>
-  <app-article *ngFor="let localArticle of articles" [article]="localArticle" >
-  </app-article>
-</mat-list>
+<mat-tab-group>
+  <mat-tab label="Top Headlines(my sources)">
+      <mat-list>
+        <app-article *ngFor="let localArticle of articles" [article]="localArticle" >
+        </app-article>
+      </mat-list>
+  </mat-tab>
+  <mat-tab label="Top Headlines(search)">
+      <form class="example-form" [formGroup]="searchForm">
+          <mat-form-field class="example-full-width">
+              <input matInput placeholder="Search" formControlName="searchText">
+          </mat-form-field>
+          <mat-form-field class="example-select">
+              <mat-select placeholder="Category" formControlName="categorySelect">
+                  <mat-option *ngFor="let category of categories" [value]="category">
+                      {{category}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-select">
+              <mat-select placeholder="Language" formControlName="languageSelect">
+                  <mat-option *ngFor="let language of languages" [value]="language">
+                       {{language}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-select">
+              <mat-select placeholder="Country" formControlName="countrySelect">
+                  <mat-option *ngFor="let country of countries" [value]="country">
+                      {{country}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+          <button mat-raised-button (click)="onChange()">Search</button>
+          <mat-list>
+            <app-article *ngFor="let localArticle2 of filteredArticles" [article]="localArticle2" >
+            </app-article>
+          </mat-list>
+      </form>
+  </mat-tab>
+</mat-tab-group>
+

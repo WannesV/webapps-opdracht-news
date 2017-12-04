@@ -1,3 +1,15 @@
 .example-spacer{
     flex: 1 1 auto;
 }
+
+@media screen and (max-width: 749) {
+    .toolbar-buttons {
+        visibility: hidden;
+        font-size: 25px;
+    }
+}
+@media screen and (min-width: 750px) {
+    .toolbar-buttons {
+        visibility: visible;
+    }
+}

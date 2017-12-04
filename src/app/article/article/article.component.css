@@ -1,11 +1,30 @@
-.example-card {
-    display: inline-block;
-    width: 31%;
-    margin: 1%;
-    vertical-align: top;
-    cursor: pointer;
-}
-
 .description {
     font-size: 20px;
+}
+@media screen and (max-width: 599px) {
+    .example-card {
+        display: inline-block;
+        width: 98%;
+        margin: 1%;
+        vertical-align: top;
+        cursor: pointer;
+    }
+}
+@media screen and (min-width: 600px) and (max-width: 999px) {
+    .example-card {
+        display: inline-block;
+        width: 48%;
+        margin: 1%;
+        vertical-align: top;
+        cursor: pointer;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .example-card {
+        display: inline-block;
+        width: 31%;
+        margin: 1%;
+        vertical-align: top;
+        cursor: pointer;
+    }
 }

@@ -4,7 +4,8 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule,
-  MatListModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, MatGridListModule, MatExpansionModule } from '@angular/material';
+  MatListModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, 
+  MatGridListModule, MatExpansionModule, MatTabsModule, MatSelectModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -31,6 +32,8 @@ const routes = [
     MatAutocompleteModule,
     MatGridListModule,
     MatExpansionModule,
+    MatTabsModule,
+    MatSelectModule,
     RouterModule.forChild(routes)
   ],
   declarations: [

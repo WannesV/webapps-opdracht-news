@@ -10,7 +10,8 @@ import { RouterModule } from '@angular/router';
 import { SourceDetailComponent } from './source-detail/source-detail.component';
 import { SourceResolver } from './source-resolver.service';
 import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule,
-  MatListModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, MatExpansionModule } from '@angular/material';
+  MatListModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, 
+  MatExpansionModule, MatSelectModule } from '@angular/material';
 
 const routes = [
   { path: 'list', component: SourceListComponent },
@@ -36,6 +37,7 @@ const routes = [
     MatInputModule,
     MatAutocompleteModule,
     MatExpansionModule,
+    MatSelectModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
