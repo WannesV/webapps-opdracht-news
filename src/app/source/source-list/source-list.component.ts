@@ -16,7 +16,7 @@ export class SourceListComponent implements OnInit {
   private _categories: string[];
   private _countries: string[];
   private _languages: string[];
-  private searchForm: FormGroup;
+  public searchForm: FormGroup;
   private categorySelect: FormGroup;
   private countrySelect: FormGroup;
   private languageSelect: FormGroup;

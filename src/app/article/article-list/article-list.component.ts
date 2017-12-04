@@ -22,7 +22,7 @@ export class ArticleListComponent implements OnInit {
   private _categories: string[];
   private _countries: string[];
   private _languages: string[];
-  private filterForm: FormGroup;
+  public filterForm: FormGroup;
   private categorySelect: FormGroup;
   private countrySelect: FormGroup;
   private languageSelect: FormGroup;
