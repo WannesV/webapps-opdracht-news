@@ -1,3 +1,8 @@
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Source" (change)="search()">
+    </mat-form-field>
+</form>
 <mat-list>
     <app-source *ngFor="let localSource of sources" [source]="localSource" >
     </app-source>

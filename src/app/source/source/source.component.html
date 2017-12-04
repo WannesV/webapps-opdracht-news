@@ -1,23 +1,23 @@
-<mat-card>
+<mat-card class="example-card">
   <mat-card-title-group>
-      <mat-card-title>
-          <a href="{{source.url}}" target="_blank">{{source.name}}</a>
-        </mat-card-title>
-        <mat-card-subtitle>
-          Category: {{source.category}}
-          Language: {{source.language}}
-          Country: {{source.country}}
-        </mat-card-subtitle>
+    <mat-card-title>
+      <a href="{{source.url}}" target="_blank">{{source.name}}</a>
+    </mat-card-title>
+    <mat-card-subtitle>
+      Category: {{source.category}}
+      Language: {{source.language}}
+      Country: {{source.country}}
+    </mat-card-subtitle>
   </mat-card-title-group>
   <mat-card-content>
-      {{source.description}}
+    {{source.description}}
   </mat-card-content>
   <mat-card-actions align='end'>
-    <button mat-raised-button (click)="subscribe(source)"
+    <button mat-raised-button color="primary" (click)="subscribe(source)"
         *ngIf="!source.users.includes(user)">
       SUBSCRIBE
     </button>
-    <button mat-raised-button (click)="unsubscribe(source)"
+    <button mat-raised-button color="warn" (click)="unsubscribe(source)"
         *ngIf="source.users.includes(user)">
       UNSUBSCRIBE
     </button>

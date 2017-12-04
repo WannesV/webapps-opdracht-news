@@ -10,7 +10,8 @@ import { ActivatedRoute } from '@angular/router';
   providers: [ SourceDataService ]
 })
 export class SourceListComponent implements OnInit {
-private _sources: Source[];
+  private _sources: Source[];
+  private searchText: string;
 
   constructor(private _sourceDataService: SourceDataService) { }
 
@@ -21,6 +22,10 @@ private _sources: Source[];
 
   get sources() {
     return this._sources;
+  }
+
+  search() {
+    console.log(this.searchText);
   }
 
 }

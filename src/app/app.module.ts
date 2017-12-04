@@ -11,7 +11,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AuthenticationService } from './user/authentication.service';
 import { AuthGuardService } from './user/auth-guard.service';
 import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule,
-  MatListModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule } from '@angular/material';
+  MatListModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, 
+  MatGridListModule, MatExpansionModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,9 @@ import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIco
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
+    MatGridListModule,
+    MatExpansionModule,
+  
     UserModule,
     AppRoutingModule,
   ],

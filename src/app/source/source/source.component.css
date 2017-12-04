@@ -1,0 +1,7 @@
+.example-card {
+    display: inline-block;
+    width: 98%;
+    margin: 1%;
+    vertical-align: top;
+    cursor: pointer;
+}

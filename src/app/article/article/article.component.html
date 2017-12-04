@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="example-card" backgroundcolor="blue">
   <mat-card-title-group>
       <mat-card-title>
           <a href="{{article.url}}" target="_blank">{{article.title}}</a>
@@ -9,7 +9,9 @@
   </mat-card-title-group>
   <img mat-card-image src="{{article.urlToImage}}">
   <mat-card-content>
+    <p class="description">
       {{article.description}}
+    </p>
   </mat-card-content>
   <mat-card-actions align='end'>
   </mat-card-actions>

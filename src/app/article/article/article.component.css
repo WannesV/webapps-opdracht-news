@@ -1,0 +1,11 @@
+.example-card {
+    display: inline-block;
+    width: 31%;
+    margin: 1%;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.description {
+    font-size: 20px;
+}
