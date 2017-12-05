@@ -14,3 +14,10 @@
     width: 22%;
     margin: 1%;
 }
+
+.example-section {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}

@@ -37,7 +37,9 @@
         </mat-form-field>
 </form>
 <mat-list>
-    <app-source *ngFor="let localSource of filteredSources" [source]="localSource" >
+    <app-source *ngFor="let localSource of filteredSources" [source]="localSource" 
+        >
     </app-source>
+    <mat-spinner *ngIf="filteredSources == undefined" class="example-section"></mat-spinner>
 </mat-list>
 

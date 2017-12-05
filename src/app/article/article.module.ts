@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule,
   MatListModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, 
-  MatGridListModule, MatExpansionModule, MatTabsModule, MatSelectModule } from '@angular/material';
+  MatGridListModule, MatExpansionModule, MatTabsModule, MatSelectModule, MatProgressSpinnerModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -34,6 +34,7 @@ const routes = [
     MatExpansionModule,
     MatTabsModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
     RouterModule.forChild(routes)
   ],
   declarations: [

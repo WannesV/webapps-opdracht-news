@@ -3,6 +3,7 @@
       <mat-list>
         <app-article *ngFor="let localArticle of articles" [article]="localArticle" >
         </app-article>
+        <mat-spinner *ngIf="articles == undefined" class="example-section"></mat-spinner>
       </mat-list>
   </mat-tab>
   <mat-tab label="Top Headlines(search)">
