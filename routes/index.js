@@ -30,7 +30,6 @@ router.post('/API/sources/', auth, function (req, res, next) {
 });
 
 router.put('/API/source/:id', auth, function(req, res, next) {
-  console.log(req.body);
   Source.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
@@ -39,20 +38,21 @@ router.put('/API/source/:id', auth, function(req, res, next) {
 
 
 
-router.get('/API/source/:id', function(req, res, next)  {
-  Source.findById(req.params.id, function(err, recipe) {
+router.get('/API/source/:id', auth, function(req, res, next)  {
+  Source.findById(req.params.id, function(err, source) {
     if (err) return next(err);
     if(!source)
       return nextTick(new Error('not found ' + req.params.id));
+    console.log(source);
     res.json(source);
   });
 });
 
-router.get('/API/source/:source', function(req, res) {
-  res.json(req.source);
+router.get('/API/source/:source', auth, function(req, res) {
+  res.json(req);
 });
 
-router.delete('/API/source/:source', function(req, res, next) {
+router.delete('/API/source/:source',auth, function(req, res, next) {
   req.source.remove(function(err) {
     if (err) { return next(err); }
     res.json("removed source");

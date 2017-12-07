@@ -13,23 +13,23 @@ require('./models/Source');
 
 require('./config/passport');
 
-
+/*
 mongoose.connect(process.env.NEWS_DATABASE, {
   useMongoClient: true
 });
-/*
+*/
 mongoose.connect('mongodb://localhost/newsdb', {
   useMongoClient: true
 });
-*/
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
 
 // view engine setup
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

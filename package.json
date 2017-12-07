@@ -5,10 +5,11 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "test": "ng test",
+    "frontend-test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build -prod --aot",
+    "test": "node ./node_modules/jasmine/bin/jasmine.js",
     "startdev": "ng serve --proxy-config proxy.conf.json",
     "start": "node ./bin/www"
   },

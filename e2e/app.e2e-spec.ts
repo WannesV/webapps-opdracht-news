@@ -1,14 +1,22 @@
 import { AppPage } from './app.po';
+import { browser, by, element } from 'protractor';
 
 describe('webapps-news App', () => {
   let page: AppPage;
 
-  beforeEach(() => {
+  beforeEach((done) => {
     page = new AppPage();
+    browser.get('/login');
+    browser.findElement(by.id('username')).sendKeys('Jaak');
+    browser.findElement(by.id('password')).sendKeys('DeKatKrabtDeKrollenVanDeTrap');
+    const promise = browser.findElement(by.id('loginbtn')).click();
+    browser.wait(promise, 1000);
+
+    done();
   });
 
-  it('should display welcome message', () => {
+  it('there should be a source list component', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getSourceComponents().count()).toEqual(1);
   });
 });
